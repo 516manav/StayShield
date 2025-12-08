@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Cancellation Prediction</title>
+    <link rel="stylesheet" href="/staticFiles/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">Hotel Booking Cancellation Predictor</h1>
+    <p class="subtitle">Enter the booking details to predict whether it will be cancelled.</p>
+
+    <form action="{{ url_for('predict') }}" method="post" class="form-box">
+
+        <div class="grid">
+
+            <input type="number" placeholder="Lead Time" name="lead_time">
+            <input type="number" placeholder="Arrival Year" name="arrival_date_year">
+            <input type="number" placeholder="Weekend Nights" name="stays_in_weekend_nights">
+            <input type="number" placeholder="Week Nights" name="stays_in_week_nights">
+            <input type="number" placeholder="Adults" name="adults">
+            <input type="number" placeholder="Children" name="children">
+            <input type="number" placeholder="Previous Cancellations" name="previous_cancellations">
+            <input type="number" placeholder="Prev Not Cancelled" name="previous_bookings_not_canceled">
+            <input type="number" placeholder="Booking Changes" name="booking_changes">
+            <input type="number" placeholder="Waiting Days" name="days_in_waiting_list">
+            <input type="number" placeholder="Avg Daily Rate" name="avg_daily_rate">
+            <input type="number" placeholder="Parking Spaces" name="required_car_parking_spaces">
+            <input type="number" placeholder="Special Requests" name="total_of_special_requests">
+
+            <select name="hotel">
+                <option value="0">City Hotel</option>
+                <option value="1">Resort Hotel</option>
+            </select>
+
+            <select name="is_repeated_guest">
+                <option value="0">First Time Guest</option>
+                <option value="1">Repeated Guest</option>
+            </select>
+
+            <select name="arrival_date_month">
+                <option value="4">January</option>
+                <option value="3">February</option>
+                <option value="7">March</option>
+                <option value="0">April</option>
+                <option value="8">May</option>
+                <option value="6">June</option>
+                <option value="5">July</option>
+                <option value="1">August</option>
+                <option value="10">September</option>
+                <option value="10">October</option>
+                <option value="9">November</option>
+                <option value="2">December</option>
+            </select>
+
+            <select name="meal">
+                <option value="0">Bed & Breakfast</option>
+                <option value="1">Full Board</option>
+                <option value="2">Half Board</option>
+                <option value="3">Self Catering</option>
+            </select>
+
+            <select name="market_segment">
+                <option value="0">Aviation</option>
+                <option value="1">Complementary</option>
+                <option value="2">Corporate</option>
+                <option value="3">Direct</option>
+                <option value="4">Groups</option>
+                <option value="5">Offline</option>
+                <option value="6">Online</option>
+            </select>
+
+            <select name="assigned_room_type">
+                <option value="0">A</option>
+                <option value="1">B</option>
+                <option value="2">C</option>
+                <option value="3">D</option>
+                <option value="4">E</option>
+                <option value="5">F</option>
+                <option value="6">G</option>
+                <option value="7">H</option>
+                <option value="8">I</option>
+                <option value="9">J</option>
+                <option value="10">K</option>
+                <option value="11">L</option>
+                <option value="12">M</option>
+                <option value="13">N</option>
+                <option value="14">O</option>
+                <option value="15">P</option>
+            </select>
+
+            <select name="deposit_type">
+                <option value="0">Non-Refundable</option>
+                <option value="1">No Deposit</option>
+                <option value="2">Refundable</option>
+            </select>
+
+        </div>
+
+        <button type="submit" class="btn">Predict</button>
+    </form>
+
+    <div class="result-box">
+        {{ prediction_text }}
+    </div>
+</div>
+
+</body>
+</html>
